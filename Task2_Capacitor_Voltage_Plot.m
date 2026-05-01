@@ -1,3 +1,7 @@
+% Tim
+% Student ID: 20612520
+% Task II - Capacitor Voltage Plot
+
 clear; clc; close all;
 
 d1 = readmatrix('1us.txt');
