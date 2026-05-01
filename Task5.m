@@ -1,3 +1,5 @@
+% Tim
+% Student ID: 20612520
 % Task V: Inspect LTspice data spacing
 
 clc;
