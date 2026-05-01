@@ -4,7 +4,7 @@
 
 clear; clc;
 
-%% Import LTspice data
+% Import LTspice data
 % Expected column order in your exported file:
 % time    Vr    Vc    Ic
 data = readmatrix('Task5.txt');
@@ -17,23 +17,23 @@ vR = data(:,2);
 vC = data(:,3);
 iC = data(:,4);
 
-%% Circuit parameters from student ID 20612520
+% Circuit parameters from student ID 20612520
 R   = 1080;        % ohm
 C   = 18e-6;       % F
 Von = 7;           % V
 tau = R*C;         % s
 
-%% Time limits and interval counts
+% Time limits and interval counts
 t_end_list = [10e-3, 60e-3];
 N_list = [100, 1000, 10000];
 
-%% Preallocate result arrays
+% Preallocate result arrays
 trap_ER = zeros(length(N_list), length(t_end_list));
 trap_EC = zeros(length(N_list), length(t_end_list));
 simp_ER = zeros(length(N_list), length(t_end_list));
 simp_EC = zeros(length(N_list), length(t_end_list));
 
-%% Loop through each time limit and interval count
+% Loop through each time limit and interval count
 for j = 1:length(t_end_list)
     t_end = t_end_list(j);
 
@@ -65,7 +65,7 @@ for j = 1:length(t_end_list)
     end
 end
 
-%% Display results
+% Display results
 Trap_Table = table(N_list', ...
     trap_ER(:,1), trap_EC(:,1), trap_ER(:,2), trap_EC(:,2), ...
     'VariableNames', {'Intervals','ER_10ms','EC_10ms','ER_60ms','EC_60ms'});
@@ -80,7 +80,7 @@ disp(Trap_Table);
 disp('Simpson''s Rule Results:');
 disp(Simp_Table);
 
-%% ---------- Local functions ----------
+%Local functions
 function I = trapezoidal_rule(x, y)
     h = x(2) - x(1);
     I = h * (0.5*y(1) + sum(y(2:end-1)) + 0.5*y(end));
